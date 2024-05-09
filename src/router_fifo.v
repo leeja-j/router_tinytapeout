@@ -31,13 +31,13 @@ module router_fifo(clock,resetn,soft_reset,write_enb,read_enb,
   always@(posedge clock) 
     begin
       if(!resetn)
-          data_out <= 8'b0;
+          data_out <= 3'b0;
       else if(soft_reset) 
-          data_out <= 8'bz;
+          data_out = 3'bz;
       else if((read_enb) && (!empty))
-        data_out <= mem[rd_pointer[3:0]][7:0];
+        data_out <= mem[rd_pointer[2:0]][7:0];
       else if(count == 0)
-           data_out <= 8'bz;
+           data_out = 3'bz;
     end
   
   // ------Write Operation------ 
