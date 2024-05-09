@@ -18,7 +18,7 @@ project:
     - "project.v" 
     - "router_fifo.v"
     - "router_fsm.v" 
-    - "router_reg.v "
+    - "router_reg.v"
     - "router_sync.v" 
     - "router_top.v"
 
