@@ -16,9 +16,9 @@ module tt_um_router (
     input  wire       rst_n     // reset_n - low to reset
 );
 assign uio_oe=8'b11111111;
-assign ui_in[7]=1'b0;
+
 assign uio_out[7:6]=2'b00;
-assign ena=1'b1;
+
 router_top router_top (
 		.clock(clk),
 		.resetn(rst_n),
