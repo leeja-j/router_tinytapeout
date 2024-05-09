@@ -17,7 +17,7 @@ module tt_um_router (
 );
 assign uio_oe=8'b11111111;
 assign ui_in[7]=1'b0;
-assign uo_out[7:6]=2'b00;
+assign uio_out[7:6]=2'b00;
 assign ena=1'b1;
 router_top router_top (
 		.clock(clk),

@@ -1,11 +1,4 @@
-/***************************************************************************************************
 
-NAME        :  MOHAMED ANAS MN
-FILENAME    :  router_fsm.v
-DATE        :  22/08/2021
-DESCRIPTION :  ROUTER FSM - design
-
-****************************************************************************************************/
 
 module router_fsm(clock,resetn,pkt_valid,data_in,fifo_full,fifo_empty_0,fifo_empty_1,fifo_empty_2,
                   soft_reset_0,soft_reset_1,soft_reset_2,parity_done,low_packet_valid,
@@ -121,8 +114,7 @@ parameter DECODE_ADDRESS     = 3'b000,
   assign write_enb_reg=((PS==LOAD_DATA||PS==LOAD_PARITY||PS==LOAD_AFTER_FULL)?1:0);
   assign full_state=((PS==FIFO_FULL_STATE)?1:0);
   assign lfd_state=((PS==LOAD_FIRST_DATA)?1:0);
-  assign busy=((PS==FIFO_FULL_STATE||PS==LOAD_AFTER_FULL||PS==WAIT_TILL_EMPTY||
-       PS==LOAD_FIRST_DATA||PS==LOAD_PARITY||PS==CHECK_PARITY_ERROR)?1:0);
+  assign busy=((PS==FIFO_FULL_STATE||PS==LOAD_AFTER_FULL||PS==WAIT_TILL_EMPTY||PS==LOAD_FIRST_DATA||PS==LOAD_PARITY||PS==CHECK_PARITY_ERROR)?1:0);
   //assign busy=((PS==LOAD_DATA || PS==DECODE_ADDRESS)?0:1);
   assign ld_state=((PS==LOAD_DATA)?1:0);
   assign laf_state=((PS==LOAD_AFTER_FULL)?1:0);
