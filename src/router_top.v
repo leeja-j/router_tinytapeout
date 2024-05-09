@@ -12,11 +12,11 @@ module router_top(clock,resetn,pkt_valid,read_enb_0,read_enb_1,read_enb_2,data_i
          fifo_full,detect_add,ld_state,laf_state,full_state,lfd_state,rst_int_reg,
          parity_done,low_packet_valid,write_enb_reg;
 	wire [2:0]write_enb;
-	wire [7:0]d_in;
+	wire [2:0]d_in;
 	
     //-------fifo instantiation-----
     
-    
+   
 	
 	router_fifo FIFO_0(.clock(clock),
 	                   .resetn(resetn),
