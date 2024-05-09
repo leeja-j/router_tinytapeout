@@ -22,9 +22,25 @@ module tb ();
   wire [7:0] uo_out;
   wire [7:0] uio_out;
   wire [7:0] uio_oe;
+  
+  reg  clock ,resetn, read_enb_0, read_enb_1, read_enb_2, packet_valid;
+reg [2:0]data_in;
+wire [2:0]data_out_0, data_out_1, data_out_2;
+wire vld_out_0, vld_out_1, vld_out_2, err, busy;
+integer i;
 
+initial 
+	begin
+	clk = 1;
+	forever 
+	#5 clk=~clk;
+	end
+	
+assign data_out_0 = uo_out[2:0];
+assign data_out_1 = uo_out[5:3];
+assign data_out_2 = uio_out[2:0];
   // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  tt_um_router tt_um_router (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
@@ -32,7 +48,8 @@ module tb ();
       .VGND(1'b0),
 `endif
 
-      .ui_in  (ui_in),    // Dedicated inputs
+     
+	.ui_in  (ui_in),    // Dedicated inputs
       .uo_out (uo_out),   // Dedicated outputs
       .uio_in (uio_in),   // IOs: Input path
       .uio_out(uio_out),  // IOs: Output path

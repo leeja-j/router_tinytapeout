@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module tt_um_example (
+module tt_um_router (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -15,10 +15,24 @@ module tt_um_example (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
+assign uio_oe=8'b11111111;
+router_top router_top (
+		.clock(clk),
+		.resetn(rst_n),
+		.data_in(ui_in[2:0]),
+		.pkt_valid(ui_in[3]),
+		.read_enb_0(ui_in[4]),
+		.read_enb_1(ui_in[5]),
+		.read_enb_2(ui_in[6]),
+		.data_out_0(uo_out[2:0]),
+		.data_out_1(uo_out[5:3]),
+		.data_out_2(uio_out[2:0]),
+		.vld_out_0(uio_out[3]),
+		.vld_out_1(uio_out[4]),
+		.vld_out_2(uio_out[5]),
+		.err(uo_out[6]),
+		.busy(uo_out[7])
+		);
 
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
-  assign uio_oe  = 0;
 
 endmodule
